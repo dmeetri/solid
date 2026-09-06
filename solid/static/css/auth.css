@@ -8,8 +8,21 @@
 }
 
 .auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
   width: 420px;
 }
 
 /* LOGIN FORM */
 
+.auth-form-input {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.auth-form-input input {
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid var(--color-border);
+}
