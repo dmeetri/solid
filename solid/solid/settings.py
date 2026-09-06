@@ -34,7 +34,7 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 # Django
 
 INSTALLED_APPS = [
-    'django.contrib.admin'
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

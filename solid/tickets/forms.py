@@ -1,7 +1,9 @@
 from django import forms
-from django.conf import settings
+from django.contrib.auth import get_user_model
 
 from .models import TicketModel
+
+User = get_user_model()
 
 class TicketCreateForm(forms.ModelForm):
     '''Creates a new request'''
@@ -14,7 +16,7 @@ class TicketCreateForm(forms.ModelForm):
 class TransferForm(forms.Form):
     '''Transfer the request to another user'''
     new_user = forms.ModelChoiceField(
-        queryset=settings.AUTH_USER_MODEL.objects.filter(groups__name='tech'),#FIXME - group tech
+        queryset=User.objects.filter(groups__name='tech'),#FIXME - group tech
         label='Новый исполнитель',
         empty_label='Выберите исполнителя'
     )

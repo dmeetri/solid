@@ -9,6 +9,7 @@ class CustomUserModel(AbstractUser):
     class Status(models.TextChoices):
         FREE = 'FREE', 'Свободен'
         BUSY = 'BUSY', 'Занят'
+        VACATION = 'VACATION', 'В отпуске'
 
     status = models.CharField(
         choices=Status.choices,

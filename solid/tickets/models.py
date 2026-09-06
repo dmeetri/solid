@@ -4,7 +4,7 @@ from django.utils import timezone
 
 class TicketModel(models.Model):
     creator = models.CharField(max_length=100)
-    desceiption = models.TextField()
+    description = models.TextField()
     ticket_number = models.CharField(
         max_length=20,
         unique=True,
