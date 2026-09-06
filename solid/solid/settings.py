@@ -1,12 +1,17 @@
 from pathlib import Path
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-hwbrt+k9elz=bagg+em^o0f_1=k)8%$w$2idg0hgzz@mvp9-y!'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
-DEBUG = True
+DEBUG = os.getenv("DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(',')
 
 INSTALLED_APPS = [
     'django.contrib.auth',
@@ -55,8 +60,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-#TODO добавить подключение к postgres
 
 AUTH_PASSWORD_VALIDATORS = [
     {
