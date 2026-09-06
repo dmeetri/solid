@@ -6,9 +6,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'css/reset.css' %}">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  {% block extra_css %}{% endblock %}
   <title>SOLID | {% block title %}{% endblock %}</title>
 </head>
 <body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <span class="font-22 font-regular">SOLID</span>
+
+        <nav class="header-nav">
+          <a href="#">Создать заявку</a>
+          <a href="#">Жалоба</a>
+          <a href="#">Все заявки</a>
+          <a href="#">Панель</a>
+        </nav>
+
+        <div>
+          Выход / Вход
+        </div>
+      </div>
+    </div>
+  </header>
+
   {% block content %}{% endblock %}
 </body>
 </html>
