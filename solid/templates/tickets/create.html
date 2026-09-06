@@ -6,10 +6,12 @@
 <div class="container">
   <div class="ticket-center-container">
     <form action="" class="main-block shadow create-ticket-form">
+      {% csrf_token %}
       <h3>Создать заявку</h3>
 
       <div class="create-ticket-form-input">
-        <input placeholder="Опишите проблему" type="text">
+        {{ form.description }}
+        {{ form.description.errors }}
       </div>
 
       <button type="submit" class="main-button">Отправить</button>
