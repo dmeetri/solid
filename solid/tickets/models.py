@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 class TicketModel(models.Model):
-    otdel = models.CharField(max_length=100)
+    creator = models.CharField(max_length=100)
     desceiption = models.TextField()
     ticket_number = models.CharField(
         max_length=20,
@@ -44,6 +44,7 @@ class TicketModel(models.Model):
 
             self.ticket_number = f"{timezone.now().year}{num:06d}"
         super().save(*args, **kwargs)
+
 
 class FeedbackModel(models.Model):
     ticket = models.ForeignKey(
