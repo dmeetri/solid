@@ -1,0 +1,29 @@
+/* CREATE TICKETS */
+
+.ticket-center-container {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.create-ticket-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 420px;
+}
+
+.create-ticket-form-input {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.create-ticket-form-input input {
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+
+
