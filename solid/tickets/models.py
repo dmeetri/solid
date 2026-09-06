@@ -59,3 +59,10 @@ class AdminTaskModel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+
+
+class AssignmentCounterModel(models.Model):
+    last_user = models.ForeignKey(
+        User, on_delete=models.SET_NULL,
+        null=True, blank=True,
+    )
