@@ -9,3 +9,8 @@ class TicketService:
         )
 
         return ticket
+
+    @staticmethod
+    def get_user_tickets(user):
+        tickets = TicketModel.objects.filter(creator=user)
+        return tickets
