@@ -1,4 +1,11 @@
-from django.shortcuts import render
+from django.contrib.auth.views import LoginView
+from django.contrib.auth import logout
+from django.shortcuts import redirect
 
-def index(request):
-    return render(request, 'auth/login.html')
+class SolidLoginView(LoginView):
+    template_name = 'tickets/login.html'
+    redirect_authenticated_user = True
+
+def solid_logout(request):
+    logout(request)
+    return redirect('create_ticket')
