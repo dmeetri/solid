@@ -1,6 +1,6 @@
 from random import randint
 
-from django.contrib.auth.models import User
+from django.conf import settings
 
 from .models import AssignmentCounterModel
 
@@ -12,7 +12,7 @@ def get_next_assignee():
     If there is no artist, return None
     Checks if the executor is disabled, skips it
     '''
-    techs = User.objects.filter(username__in=['dmeetri', 'valentin'])
+    techs = settings.AUTH_USER_MODEL.objects.filter(username__in=['dmeetri', 'valentin'])
     if techs.count() < 1:
         return techs.first() if techs.exists() else None
 

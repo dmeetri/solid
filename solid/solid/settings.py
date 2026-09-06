@@ -3,15 +3,35 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+# server
 
+load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv("SECRET_KEY")
-
 DEBUG = os.getenv("DEBUG")
-
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(',')
+
+LANGUAGE_CODE = 'en-us'
+
+MAILERS = {
+    'default': {
+        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
+    },
+}
+
+# time
+
+TIME_ZONE = 'UTC'
+USE_I18N = True
+USE_TZ = True
+
+# static
+
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+
+# Django
 
 INSTALLED_APPS = [
     'django.contrib.auth',
@@ -20,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'users',
     'tickets',
 ]
 
@@ -54,12 +75,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'solid.wsgi.application'
 
+# database
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# Auth
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -76,19 +101,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-us'
+AUTH_USER_MODEL = 'users.CustomUserModel'
 
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_TZ = True
-
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
-
-MAILERS = {
-    'default': {
-        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
-    },
-}
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = ''
+LOGOUT_REDIRECT_URL = 'login'

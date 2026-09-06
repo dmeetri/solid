@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 from django.utils import timezone
 
 class TicketModel(models.Model):
@@ -11,7 +11,7 @@ class TicketModel(models.Model):
         editable=False
     )
     assigned_to = models.ForeignKey(
-        User,
+        settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         null=True, blank=True,
     )
@@ -56,13 +56,17 @@ class FeedbackModel(models.Model):
 
 
 class AdminTaskModel(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
 
 class AssignmentCounterModel(models.Model):
     last_user = models.ForeignKey(
-        User, on_delete=models.SET_NULL,
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
         null=True, blank=True,
     )
