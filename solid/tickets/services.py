@@ -14,3 +14,7 @@ class TicketService:
     def get_user_tickets(user):
         tickets = TicketModel.objects.filter(creator=user)
         return tickets
+
+    @staticmethod
+    def transfer_ticket(tikcet):
+        pass
