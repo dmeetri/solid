@@ -11,12 +11,22 @@
 <div class="container">
   <div class="auth-center-container">
     <form action="" class="main-block shadow auth-form">
+      {% csrf_token %}
       <h3>Вход в систему</h3>
 
       <div class="auth-form-input">
-        <input placeholder="Имя пользователя" type="text">
-        <input placeholder="Пароль" type="password">
+        {{ form.username }}
+        {% if form.username.errors %}
+            <div style="color: red; font-size: 14px;">{{ form.username.errors }}</div>
+        {% endif %}
+
+        {{ form.password }}
+        {% if form.password.errors %}
+            <div style="color: red; font-size: 14px;">{{ form.password.errors }}</div>
+        {% endif %}
       </div>
+
+      <button class="main-button">Войти</button>
     </form>
   </div>
 </div>
