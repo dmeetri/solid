@@ -3,7 +3,7 @@ from django.contrib.auth import logout
 from django.shortcuts import redirect
 
 class SolidLoginView(LoginView):
-    template_name = 'tickets/login.html'
+    template_name = 'auth/login.html'
     redirect_authenticated_user = True
 
 def solid_logout(request):
